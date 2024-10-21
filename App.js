@@ -13,13 +13,16 @@ import HeavyRainWarning from './pages/warnings/heavyRain';
 import EarthquakeWarning from './pages/warnings/EarthQuake';
 import FireWarning from './pages/warnings/FireWarning';
 
+
+// ENV
+import { ONESIGNAL_APP_ID } from '@env';
 const Stack = createStackNavigator();
 
 
 const App = () => {
   
   OneSignal.Debug.setLogLevel(LogLevel.Verbose);
-  OneSignal.initialize("e18cbe2a-345f-4303-a7f2-e5ec6857f956");
+  OneSignal.initialize(ONESIGNAL_APP_ID);
   OneSignal.Notifications.requestPermission(true);
   
 
