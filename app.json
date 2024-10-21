@@ -11,17 +11,44 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+    "assetBundlePatterns": [
+      "assets/**/*"
+    ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.afonsoingles.alertariscos"
     },
     "android": {
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.afonsoingles.alertariscos"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+      "expo-font",
+      {
+        "fonts": [
+        "./assets/fonts/RedHatDisplay.ttf"
+        ]
+      }
+      ],
+      [
+      "onesignal-expo-plugin",
+      {
+        "mode": "development"
+      }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "bdbefb2f-8edd-471e-ac5b-a2c7152a7171"
+      }
     }
   }
 }
