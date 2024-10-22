@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Alert, View, Text, Platform } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import messaging from '@react-native-firebase/messaging';
@@ -12,7 +11,7 @@ import FloodWarning from './pages/warnings/Floods';
 import HeavyRainWarning from './pages/warnings/heavyRain';
 import EarthquakeWarning from './pages/warnings/EarthQuake';
 import FireWarning from './pages/warnings/FireWarning';
-
+import AboutUs from './pages/About';
 
 // ENV
 import { ONESIGNAL_APP_ID } from '@env';
@@ -40,6 +39,7 @@ const App = () => {
         <Stack.Screen name="HeavyRainWarning" component={HeavyRainWarning} options={{ headerShown: false,  headerBackTitleVisible: false }}/>
         <Stack.Screen name="EarthquakeWarning" component={EarthquakeWarning} options={{ headerShown: false,  headerBackTitleVisible: false }}/>
         <Stack.Screen name="FireWarning" component={FireWarning} options={{ headerShown: false,  headerBackTitleVisible: false }}/>
+        <Stack.Screen name="AboutUs" component={AboutUs} options={{ headerShown: false,  headerBackTitleVisible: false }}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

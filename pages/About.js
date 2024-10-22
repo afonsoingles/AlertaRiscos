@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+
 import { View, Text, Image } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -7,7 +8,12 @@ import LiveMessage from '../components/liveMessage';
 import  WelcomePage_styles  from '../styles/welcomePage';
 import ImportantWarnings from '../components/ImportantWarnings';
 import MainbarBottom from '../components/MainbarBottom';
-export default function HomeScreen({ navigation }) {
+import WarningBody from '../components/WarningBody';
+import { StyleSheet } from 'react-native';
+
+
+
+export default function AboutUs({ navigation }) {
   const [fontsLoaded] = useFonts({
     RedHatDisplay_700Bold,
   });
@@ -22,8 +28,11 @@ export default function HomeScreen({ navigation }) {
     >
       <View style={WelcomePage_styles.view}>
         <Image style={WelcomePage_styles.logoBanner} source={require('../assets/images/AlertaRiscosBanner.png')} />
-        <LiveMessage text="Bem-vindo ao Alerta Riscos!" />
-        <ImportantWarnings />
+        <Text style={styles.centerTopText}>Informações</Text>
+        <Text style={styles.descriptionText}>
+          
+        </Text>
+        
 
         <View style={{ flex: 1, justifyContent: 'flex-end', marginBottom: '5%'}}>
           <MainbarBottom />
@@ -34,3 +43,22 @@ export default function HomeScreen({ navigation }) {
     </LinearGradient>
   );
 }
+
+
+const styles = StyleSheet.create({
+  centerTopText: {
+    fontFamily: 'RedHatDisplay_700Bold',
+    fontSize: 30,
+    color: 'white',
+    textAlign: 'center',
+    marginTop: '2%',
+    marginBottom: '5%'
+  },
+  descriptionText: {
+    fontFamily: 'RedHatDisplay_700Bold',
+    fontSize: 20,
+    color: 'white',
+    textAlign: 'center',
+    marginBottom: '5%'
+  }
+});
