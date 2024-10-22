@@ -12,12 +12,14 @@ import FloodWarning from './pages/warnings/Floods';
 import HeavyRainWarning from './pages/warnings/heavyRain';
 import EarthquakeWarning from './pages/warnings/EarthQuake';
 import FireWarning from './pages/warnings/FireWarning';
-
+import About from './pages/About';
+import Prevention from './pages/Prevention';
 
 // ENV
 import { ONESIGNAL_APP_ID } from '@env';
-const Stack = createStackNavigator();
+import BottomMenu from './components/BottomMenu';
 
+const Stack = createStackNavigator();
 
 const App = () => {
   
@@ -40,7 +42,10 @@ const App = () => {
         <Stack.Screen name="HeavyRainWarning" component={HeavyRainWarning} options={{ headerShown: false,  headerBackTitleVisible: false }}/>
         <Stack.Screen name="EarthquakeWarning" component={EarthquakeWarning} options={{ headerShown: false,  headerBackTitleVisible: false }}/>
         <Stack.Screen name="FireWarning" component={FireWarning} options={{ headerShown: false,  headerBackTitleVisible: false }}/>
+        <Stack.Screen name="About" component={About} options={{ headerShown: false,  headerBackTitleVisible: false }}/>
+        <Stack.Screen name="Prevention" component={Prevention} options={{ headerShown: false,  headerBackTitleVisible: false }}/>
       </Stack.Navigator>
+      <BottomMenu />
     </NavigationContainer>
   );
 };
