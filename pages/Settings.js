@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { View, Text, ScrollView, StyleSheet, Image, TouchableOpacity, TextInput } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useFonts, RedHatDisplay_700Bold, RedHatDisplay_400Regular } from '@expo-google-fonts/red-hat-display';
@@ -7,6 +7,8 @@ import { useNavigation } from '@react-navigation/native';
 import { MaterialIcons } from '@expo/vector-icons';
 import municipalitiesData from '../assets/files/municipalities.json';
 import CheckBox from '@react-native-community/checkbox';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import debounce from 'lodash.debounce';
 
 export default function Settings() {
   const [fontsLoaded] = useFonts({
@@ -22,23 +24,47 @@ export default function Settings() {
 
   const navigation = useNavigation();
 
-  const handleSearch = (text) => {
-    setSearch(text);
-    if (text) {
-      const filtered = municipalitiesData.filter(municipio =>
-        municipio.value.name.toLowerCase().includes(text.toLowerCase())
-      );
-      setFilteredMunicipalities(filtered);
-    } else {
-      setFilteredMunicipalities([]);
-    }
-  };
+  useEffect(() => {
+    const loadCheckedMunicipalities = async () => {
+      try {
+        const savedCheckedMunicipalities = await AsyncStorage.getItem('checkedMunicipalities');
+        if (savedCheckedMunicipalities) {
+          setCheckedMunicipalities(JSON.parse(savedCheckedMunicipalities));
+        }
+      } catch (error) {
+        console.error('Failed to load checked municipalities:', error);
+      }
+    };
 
-  const handleCheckBoxChange = (municipioName) => {
-    setCheckedMunicipalities(prevState => ({
-      ...prevState,
-      [municipioName]: !prevState[municipioName]
-    }));
+    loadCheckedMunicipalities();
+  }, []);
+
+  const handleSearch = useCallback(
+    debounce((text) => {
+      if (text) {
+        const filtered = municipalitiesData.filter(municipio =>
+          municipio.value.name.toLowerCase().includes(text.toLowerCase())
+        );
+        setFilteredMunicipalities(filtered);
+      } else {
+        setFilteredMunicipalities([]);
+      }
+    }, 300),
+    []
+  );
+
+  const handleCheckBoxChange = async (municipioName) => {
+    const newCheckedMunicipalities = {
+      ...checkedMunicipalities,
+      [municipioName]: !checkedMunicipalities[municipioName]
+    };
+    setCheckedMunicipalities(newCheckedMunicipalities);
+
+    try {
+      await AsyncStorage.setItem('checkedMunicipalities', JSON.stringify(newCheckedMunicipalities));
+    } catch (error) {
+      console.error('Failed to save checked municipalities:', error);
+    }
   };
 
   return (
@@ -77,13 +103,17 @@ export default function Settings() {
                   placeholder="Pesquise pelo Município"
                   style={styles.searchInput}
                   value={search}
-                  onChangeText={handleSearch}
+                  onChangeText={(text) => {
+                    setSearch(text);
+                    handleSearch(text);
+                  }}
                 />
               </View>
               <View style={styles.municipioList}>
                 {filteredMunicipalities.map((municipio, index) => (
                   <View key={index} style={styles.municipioItem}>
                     <CheckBox
+                      tintColors={{ true: '#E41E1B', false: '#fff' }}
                       value={checkedMunicipalities[municipio.value.name] || false}
                       onValueChange={() => handleCheckBoxChange(municipio.value.name)}
                     />
