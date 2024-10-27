@@ -30,11 +30,11 @@ export default function Prevention() {
             <Text style={styles.containerText}>Documento 1</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.containerBox} onPress={() => handleDocumentNavigation('document2')}>
-            <Image source={require('../assets/images/document2.png')} style={styles.image} />
+            <Image source={require('../assets/images/document1.png')} style={styles.image} />
             <Text style={styles.containerText}>Documento 2</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.containerBox} onPress={() => handleDocumentNavigation('document3')}>
-            <Image source={require('../assets/images/document3.png')} style={styles.image} />
+            <Image source={require('../assets/images/document1.png')} style={styles.image} />
             <Text style={styles.containerText}>Documento 3</Text>
           </TouchableOpacity>
         </View>

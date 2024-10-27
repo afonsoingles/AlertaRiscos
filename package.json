@@ -11,6 +11,8 @@
   "dependencies": {
     "@expo-google-fonts/red-hat-display": "^0.2.3",
     "@expo/metro-runtime": "~3.2.3",
+    "@react-native-async-storage/async-storage": "1.23.1",
+    "@react-native-community/checkbox": "^0.5.17",
     "@react-native-community/masked-view": "^0.1.11",
     "@react-native-firebase/app": "^21.0.0",
     "@react-native-firebase/messaging": "^21.0.0",
@@ -22,7 +24,7 @@
     "expo-device": "~6.0.2",
     "expo-font": "^12.0.10",
     "expo-linear-gradient": "~13.0.2",
-    "expo-notifications": "~0.28.18",
+    "expo-notifications": "~0.28.19",
     "expo-status-bar": "~1.12.1",
     "onesignal-expo-plugin": "^2.0.3",
     "react": "18.2.0",
@@ -38,7 +40,8 @@
     "react-native-web": "~0.19.10"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.0"
+    "@babel/core": "^7.20.0",
+    "babel-plugin-transform-inline-environment-variables": "^0.4.4"
   },
   "private": true
 }

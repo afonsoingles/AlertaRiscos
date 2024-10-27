@@ -31,14 +31,6 @@
     },
     "plugins": [
       [
-      "expo-font",
-      {
-        "fonts": [
-        "./assets/fonts/RedHatDisplay.ttf"
-        ]
-      }
-      ],
-      [
       "onesignal-expo-plugin",
       {
         "mode": "development"

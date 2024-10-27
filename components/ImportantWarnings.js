@@ -1,12 +1,12 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { API_URL } from '@env';
+
 import * as Device from 'expo-device';
 import { useNavigation } from '@react-navigation/native';
 
 export default function ImportantAlerts() {
-  const baseUrl = API_URL ;
+  const baseUrl = process.env.API_URL ;
  
   
 

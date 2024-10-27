@@ -11,14 +11,14 @@ const MainbarBottom = () => {
 
     return (
         <View style={styles.container}>
-            <TouchableOpacity style={styles.button} onPress={() => handlePress('AboutUs')} accessible={true} accessibilityRole="button" accessibilityLabel="About">
-                <Image source={require('../assets/icons/menu/info.png')} style={styles.icon} />
+            <TouchableOpacity style={styles.button} onPress={() => handlePress('Prevention')} accessible={true} accessibilityRole="button" accessibilityLabel="About">
+                <Image source={require('../assets/icons/menu/emergency-bag.png')} style={styles.icon} />
             </TouchableOpacity>
             <TouchableOpacity style={styles.button} onPress={() => handlePress('Home')} accessible={true} accessibilityRole="button" accessibilityLabel="Home">
                 <Image source={require('../assets/icons/menu/home.png')} style={styles.icon} />
             </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={() => handlePress('Prevention')} accessible={true} accessibilityRole="button" accessibilityLabel="Prevention">
-                <Image source={require('../assets/icons/menu/plus.png')} style={styles.icon} />
+            <TouchableOpacity style={styles.button} onPress={() => handlePress('Settings')} accessible={true} accessibilityRole="button" accessibilityLabel="Prevention">
+                <Image source={require('../assets/icons/menu/settings.png')} style={styles.icon} />
             </TouchableOpacity>
         </View>
     );
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         paddingVertical: 10,
         gap: 30,
-        paddingHorizontal: 30,
+        paddingHorizontal: 50,
         borderRadius: 30,
     },
     button: {
@@ -43,6 +43,8 @@ const styles = StyleSheet.create({
         width: 30,
         height: 30,
     },
+
+    
 });
 
 export default MainbarBottom;

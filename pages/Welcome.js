@@ -24,7 +24,7 @@ export default function HomeScreen({ navigation }) {
         <Image style={WelcomePage_styles.logoBanner} source={require('../assets/images/AlertaRiscosBanner.png')} />
         <LiveMessage text="Bem-vindo ao Alerta Riscos!" />
         <ImportantWarnings />
-
+        
         <View style={{ flex: 1, justifyContent: 'flex-end', marginBottom: '5%'}}>
           <MainbarBottom />
         </View>
@@ -34,3 +34,6 @@ export default function HomeScreen({ navigation }) {
     </LinearGradient>
   );
 }
+
+
+//TODO:  Prevencao, settings

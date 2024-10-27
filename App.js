@@ -11,23 +11,19 @@ import FloodWarning from './pages/warnings/Floods';
 import HeavyRainWarning from './pages/warnings/heavyRain';
 import EarthquakeWarning from './pages/warnings/EarthQuake';
 import FireWarning from './pages/warnings/FireWarning';
-<<<<<<< HEAD
-import AboutUs from './pages/About';
-=======
 import About from './pages/About';
 import Prevention from './pages/Prevention';
->>>>>>> f35cda5869b8307cb32601219ceb1ade5cb50d1a
+import Settings from './pages/Settings';
 
 // ENV
-import { ONESIGNAL_APP_ID } from '@env';
-import BottomMenu from './components/BottomMenu';
+
 
 const Stack = createStackNavigator();
 
 const App = () => {
   
   OneSignal.Debug.setLogLevel(LogLevel.Verbose);
-  OneSignal.initialize(ONESIGNAL_APP_ID);
+  OneSignal.initialize(process.env.ONESIGNAL_APP_ID);
   OneSignal.Notifications.requestPermission(true);
   
 
@@ -35,7 +31,7 @@ const App = () => {
     console.log('OneSignal: notification clicked:', event);
   });
 
-
+  console.log("ONESIGNAL APP ID: ", process.env.ONESIGNAL_APP_ID);
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
@@ -45,14 +41,11 @@ const App = () => {
         <Stack.Screen name="HeavyRainWarning" component={HeavyRainWarning} options={{ headerShown: false,  headerBackTitleVisible: false }}/>
         <Stack.Screen name="EarthquakeWarning" component={EarthquakeWarning} options={{ headerShown: false,  headerBackTitleVisible: false }}/>
         <Stack.Screen name="FireWarning" component={FireWarning} options={{ headerShown: false,  headerBackTitleVisible: false }}/>
-<<<<<<< HEAD
-        <Stack.Screen name="AboutUs" component={AboutUs} options={{ headerShown: false,  headerBackTitleVisible: false }}/>
-=======
         <Stack.Screen name="About" component={About} options={{ headerShown: false,  headerBackTitleVisible: false }}/>
         <Stack.Screen name="Prevention" component={Prevention} options={{ headerShown: false,  headerBackTitleVisible: false }}/>
->>>>>>> f35cda5869b8307cb32601219ceb1ade5cb50d1a
+        <Stack.Screen name="Settings" component={Settings} options={{ headerShown: false,  headerBackTitleVisible: false }}/>
       </Stack.Navigator>
-      <BottomMenu />
+
     </NavigationContainer>
   );
 };
