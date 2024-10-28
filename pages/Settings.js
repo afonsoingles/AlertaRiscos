@@ -9,6 +9,7 @@ import municipalitiesData from '../assets/files/municipalities.json';
 import CheckBox from '@react-native-community/checkbox';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import debounce from 'lodash.debounce';
+import { LogLevel, OneSignal } from 'react-native-onesignal';
 
 export default function Settings() {
   const [fontsLoaded] = useFonts({
@@ -39,6 +40,8 @@ export default function Settings() {
     loadCheckedMunicipalities();
   }, []);
 
+
+
   const handleSearch = useCallback(
     debounce((text) => {
       if (text) {
@@ -66,6 +69,20 @@ export default function Settings() {
       console.error('Failed to save checked municipalities:', error);
     }
   };
+
+  useEffect(() => {
+    const updateSubscriptions = async () => {
+      for (const [municipioName, isChecked] of Object.entries(checkedMunicipalities)) {
+        if (isChecked) {
+          OneSignal.User.addTag(municipioName, "subscribed");
+        } else {
+          OneSignal.User.addTag(municipioName, "unsubscribed");
+        }
+      }
+    };
+
+    updateSubscriptions();
+  }, [checkedMunicipalities]);
 
   return (
     <LinearGradient
@@ -113,9 +130,9 @@ export default function Settings() {
                 {filteredMunicipalities.map((municipio, index) => (
                   <View key={index} style={styles.municipioItem}>
                     <CheckBox
-                      tintColors={{ true: '#E41E1B', false: '#fff' }}
-                      value={checkedMunicipalities[municipio.value.name] || false}
-                      onValueChange={() => handleCheckBoxChange(municipio.value.name)}
+                      tintColors={{ true: '#fff', false: '#fff' }}
+                      value={checkedMunicipalities[municipio.key] || false}
+                      onValueChange={() => handleCheckBoxChange(municipio.key)}
                     />
                     <Text style={styles.municipioText}>{municipio.value.name}</Text>
                   </View>
