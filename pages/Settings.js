@@ -62,7 +62,7 @@ export default function Settings() {
       [municipioName]: !checkedMunicipalities[municipioName]
     };
     setCheckedMunicipalities(newCheckedMunicipalities);
-
+    
     try {
       await AsyncStorage.setItem('checkedMunicipalities', JSON.stringify(newCheckedMunicipalities));
     } catch (error) {

@@ -22,7 +22,8 @@ const App = () => {
   useEffect(() => {
     // Initialize OneSignal
     OneSignal.Debug.setLogLevel(LogLevel.Verbose);
-    OneSignal.initialize("6e671f3d-ed8d-4edd-9803-53d1d65741a1");
+    OneSignal.initialize(process.env.ONESIGNAL_APP_ID);
+    console.log("ONESIGNAL-APP-ID: ", process.env.ONESIGNAL_APP_ID);
     OneSignal.Notifications.requestPermission(true);
 
     // Login with external ID
@@ -44,19 +45,7 @@ const App = () => {
 
     loginWithExternalId();
 
-    
 
-    // Get user tags and check saved municipalities
-    const getUserTags = async () => {
-      try {
-        const onesignalId = await OneSignal.User.getExternalId();
-        console.log('OneSignal ID:', onesignalId);
-        const tags = await OneSignal.User.getTags();
-        console.log('User Tags:', tags);
-      } catch (error) {
-        console.error('Failed to get user tags:', error);
-      }
-    };
 
     const loadMunicipalities = async () => {
       try {
@@ -71,7 +60,7 @@ const App = () => {
       }
     };
 
-    getUserTags();
+    
     loadMunicipalities();
   }, []);
 

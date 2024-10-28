@@ -22,7 +22,7 @@ export default function HomeScreen({ navigation }) {
     >
       <View style={WelcomePage_styles.view}>
         <Image style={WelcomePage_styles.logoBanner} source={require('../assets/images/AlertaRiscosBanner.png')} />
-        <LiveMessage text="Bem-vindo ao Alerta Riscos!" />
+        
         <ImportantWarnings />
         
         <View style={{ flex: 1, justifyContent: 'flex-end', marginBottom: '5%'}}>
