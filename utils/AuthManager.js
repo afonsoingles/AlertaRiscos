@@ -1,9 +1,10 @@
 import { Client, Account, ID, AppwriteException, Messaging, Avatars } from "react-native-appwrite";
+import { APPWRITE_PROJECT_ID, REACT_APP_PROJECT_ID, REACT_APP_PLATFORM } from '@env';
 
 let client = new Client()
     .setEndpoint("https://cloud.appwrite.io/v1")
-    .setProject("673cc35600008d984cad")
-    .setPlatform("com.afonsoingles.alertariscos");
+    .setProject(APPWRITE_PROJECT_ID)
+    .setPlatform(APPWRITE_PLATFORM);
 
 let account = new Account(client);
 let messaging = new Messaging(client);
