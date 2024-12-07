@@ -38,3 +38,8 @@ old_App.js
 package-lock.json
 alertariscos-firebase-adminsdk-oqsk5-c0a0e9323e.json
 eas.json
+
+appwrite_demo.js
+
+.expo
+%ProgramData%*
