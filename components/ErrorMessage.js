@@ -9,7 +9,7 @@ const ErrorMessage = ({ text, isVisible }) => {
         return null;
     }
     return (
-        <Text style={{ color: "#a80202", textAlign: 'center', fontSize: RFValue(15), maxWidth: '90%', overflow: 'hidden', alignSelf: 'center' }}>
+        <Text style={{ color: "#a80202", textAlign: 'center', fontSize: RFValue(15), maxWidth: '85%', overflow: 'hidden', alignSelf: 'center' }}>
             {text}
         </Text>
     );
